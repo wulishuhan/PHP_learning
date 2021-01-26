@@ -75,3 +75,67 @@ $a=[5,4,1,3,2];
 insertSort($a);
 var_dump($a);
 echo '<br>';
+
+/*
+ * 选择排序
+ * 在要排序的一组数中，选出最小的一个数与第一个位置的数交换。
+ * 然后在剩下的数当中再找最小的与第二个位置的数交换，
+ * 如此循环到倒数第二个数和最后一个数比较为止。
+ */
+function selectSort($arr){
+    $len=count($arr);
+    for ($i=0;$i<$len;$i++){
+        $p=$i;
+        for ($j=$i+1;$j<$len;$j++){
+            if ($arr[$p]>$arr[$j]){
+                $p=$j;
+            }
+        }
+        if ($p!=$i){
+            $tmp=$arr[$p];
+            $arr[$p]=$arr[$i];
+            $arr[$i]=$tmp;
+        }
+    }
+    return $arr;
+}
+$a=[5,4,1,3,2];
+insertSort($a);
+var_dump($a);
+echo '<br>';
+/*
+ * 归并排序
+ * 归并排序将待排序的序列分成若干组，
+ * 保证每一组都有序。
+ * 然后进行合并排序，最后整个序列都有序
+ */
+function merge_sort(array $lists){
+    $n=count($lists);
+    if ($n<=1){
+        return $lists;
+    }
+    $left=merge_sort(array_slice($lists,0,floor($n/2)));
+    $right=merge_sort(array_slice($lists,floor($n/2)));
+    $lists=merge($left,$right);
+    return $lists;
+}
+function merge(array $left,array $right){
+    $lists=[];
+    $i=$j=0;
+    while ($i < count($left) && $j < count($right)) {
+        if ($left[$i] < $right[$j]) {
+            $lists[] = $left[$i];
+            $i++;
+        } else {
+            $lists[] = $right[$j];
+            $j++;
+        }
+    }
+    $lists = array_merge($lists, array_slice($left, $i));
+    $lists = array_merge($lists, array_slice($right, $j));
+    return $lists;
+}
+$a=[5,4,1,3,2];
+insertSort($a);
+var_dump($a);
+echo '<br>';

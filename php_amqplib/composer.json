@@ -1,0 +1,15 @@
+{
+  "name": "vendor_name/php_amqplib",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Administrator",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php-amqplib/php-amqplib": ">=2.6.1"
+  }
+}
